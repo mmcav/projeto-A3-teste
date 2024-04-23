@@ -19,7 +19,7 @@ jobs:
           architecture: x64
           cache: 'maven'
           run: mvn -f my-app/pom.xml
-          cache-dependency-path: 'my-app/pom.xml'
+          cache-dependency-path: './my-app/pom.xml'
       - name: Fase verificação Maven
         run: mvn --batch-mode --update-snapshots verify
 
