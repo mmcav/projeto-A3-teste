@@ -85,7 +85,7 @@ public abstract class Produto {
   }
 
   public boolean validaProdutoFloatNonZero(float someFloat) {
-    if ((float) someFloat <= 0) {
+    if((float) someFloat <= 0) {
       return false;
     } else {
       return true;

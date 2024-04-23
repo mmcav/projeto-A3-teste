@@ -36,9 +36,15 @@ public class ClienteTest {
   }
 
   @Test
-  public void validaNomeClienteTest() {
+  public void validaNomeClienteTrueTest() {
     final String nome = "Adrianô M´aciél";
     assertTrue(cliente.validaNomeCliente(nome));
+  }
+
+  @Test
+  public void validaNomeClienteFalseTest(){
+    final String nome = "C3-PO";
+    assertFalse(cliente.validaNomeCliente(nome));
   }
 
   @Test
@@ -55,10 +61,18 @@ public class ClienteTest {
   }
 
   @Test
-  public void validaDataNascimentoClienteTest() throws ParseException {
+  public void validaDataNascimentoClienteTrueTest() throws ParseException {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date dataSubmetida = new Date();
     dataSubmetida = simpleDateFormat.parse("2024-04-05");
     assertTrue(cliente.validaDataNascimentoCliente(dataSubmetida));
+  }
+
+  @Test
+  public void validaDataNascimentoClienteFalseTest() throws ParseException {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date dataSubmetida = new Date();
+    dataSubmetida = simpleDateFormat.parse("2025-04-05");
+    assertFalse(cliente.validaDataNascimentoCliente(dataSubmetida));
   }
 }

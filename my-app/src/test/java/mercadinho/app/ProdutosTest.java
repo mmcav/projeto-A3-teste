@@ -1,12 +1,11 @@
 package mercadinho.app;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class ProdutosTest {
 
@@ -63,13 +62,19 @@ public class ProdutosTest {
   }
 
   @Test
-  public void validaStringsProdutoTest() {
+  public void validaStringsProdutoTrueTest() {
     final String stringTest = "Nestlé";
     assertTrue(produtoPeso.validaStringsProduto(stringTest));
   }
 
   @Test
-  public void validaDataValidadeTest() throws ParseException {
+  public void validaStringsProdutoFalseTeste(){
+    final String stringTest = "     ";
+    assertFalse(produtoPeso.validaStringsProduto(stringTest));
+  }
+
+  @Test
+  public void validaDataValidadeTrueTest() throws ParseException {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date dataSubmetida = new Date();
     dataSubmetida = simpleDateFormat.parse("2024-04-25");
@@ -77,14 +82,34 @@ public class ProdutosTest {
   }
 
   @Test
-  public void validaProdutoFloatNonZeroTest() {
+  public void validaDataValidadeFalseTest() throws ParseException {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date dataSubmetida = new Date();
+    dataSubmetida = simpleDateFormat.parse("2023-04-25");
+    assertFalse(produtoPeso.validaDataValidade(dataSubmetida));
+  }
+
+  @Test
+  public void validaProdutoFloatNonZeroTrueTest() {
     final float someFloat = (float) 10.23;
     assertTrue(produtoPeso.validaProdutoFloatNonZero(someFloat));
   }
 
   @Test
-  public void validaProdutoIntNonZeroTest() {
+  public void validaProdutoFloatNonZeroFalseTest() {
+    final float someFloat = (float) 0.0;
+    assertFalse(produtoPeso.validaProdutoFloatNonZero(someFloat));
+  }
+
+  @Test
+  public void validaProdutoIntNonZeroTrueTest() {
     final int someInt = (int) 3;
     assertTrue(produtoUnidade.validaProdutoIntNonZero(someInt));
+  }
+
+  @Test
+  public void validaProdutoIntNonZeroFalseTest() {
+    final int someInt = (int) 0;
+    assertFalse(produtoUnidade.validaProdutoIntNonZero(someInt));
   }
 }
