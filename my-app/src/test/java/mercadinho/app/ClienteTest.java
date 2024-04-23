@@ -1,12 +1,11 @@
 package mercadinho.app;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class ClienteTest {
 
@@ -43,10 +42,16 @@ public class ClienteTest {
   }
 
   @Test
-  public void validaCpfClienteTest() {
+  public void validaCpfClienteTrueTest() {
     final String cpf = "123.456.789-09";
     assertTrue(cliente.validaCpfCliente(cpf));
 
+  }
+
+  @Test
+  public void validaCpfClienteFalseTest() {
+    final String cpf = "123.456.789-19";
+    assertFalse(cliente.validaCpfCliente(cpf));
   }
 
   @Test
