@@ -3,8 +3,11 @@ package mercadinho.app;
 import java.util.Date;
 import java.util.regex.*;
 
+import static java.lang.System.out;
+
 public class Cliente {
 
+  private int id;
   private String nome;
   private String cpf;
   private Date dataNascimento;
@@ -12,24 +15,31 @@ public class Cliente {
   // Construtores
   public Cliente() {
 
-  };
+  }
 
-  public Cliente(String nome, String cpf, Date dataNascimento) {
+  public Cliente(int id, String nome, String cpf, Date dataNascimento) {
+    this.id = id;
     this.nome = nome;
     this.cpf = cpf;
     this.dataNascimento = dataNascimento;
-  };
+  }
 
   // Setters:
+  public void setId(int id) {
+    if(this.validaIdCliente(id)) {
+      this.id = id;
+    }
+  }
+
   public void setNome(String novoNome) {
     if (!novoNome.trim().isEmpty()) {
       if (this.validaNomeCliente(novoNome)) {
         this.nome = novoNome;
       } else {
-        System.out.printf("Erro: Nome não pode conter dígitos \n");
+        out.format("Erro: Nome não pode conter dígitos \n");
       }
     } else {
-      System.out.printf("Erro: nome não pode ser vazio \n");
+      out.format("Erro: nome não pode ser vazio \n");
     }
 
   }
@@ -39,10 +49,10 @@ public class Cliente {
       if (this.validaCpfCliente(novoCpf)) {
         this.cpf = novoCpf;
       } else {
-        System.err.printf("Erro: CPF incorreto. Informe novamente \n");
+        out.format("Erro: CPF incorreto. Informe novamente \n");
       }
     } else {
-      System.out.printf("Erro: CPF não pode ser vazio \n");
+      out.format("Erro: CPF não pode ser vazio \n");
     }
   }
 
@@ -50,11 +60,15 @@ public class Cliente {
     if (this.validaDataNascimentoCliente(novoDataNascimento)) {
       this.dataNascimento = novoDataNascimento;
     } else {
-      System.out.printf("Erro: Data de nascimento não pode ser futura \n");
+      out.format("Erro: Data de nascimento não pode ser futura \n");
     }
   }
 
   // Getters:
+  public int getId() {
+    return this.id;
+  }
+
   public String getNome() {
     return this.nome;
   }
@@ -68,6 +82,14 @@ public class Cliente {
   }
 
   // Validações
+  public boolean validaIdCliente(int id){
+    if (id > 0) {
+      return true;
+    } else {
+    return false;
+    }
+  }
+
   public boolean validaNomeCliente(String nome) {
     String regex = "\\d";
     Pattern pattern = Pattern.compile(regex);
@@ -136,5 +158,5 @@ public class Cliente {
     } else {
       return true;
     }
-  };
-};
+  }
+}

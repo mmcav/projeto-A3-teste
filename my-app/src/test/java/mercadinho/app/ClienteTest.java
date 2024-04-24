@@ -3,9 +3,9 @@ package mercadinho.app;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteTest {
 
@@ -16,7 +16,7 @@ public class ClienteTest {
     String nomeGet;
     cliente.setNome("Luísa Ferreira");
     nomeGet = cliente.getNome();
-    assertNotNull("Nome incorreto", nomeGet);
+    assertEquals("Luísa Ferreira", nomeGet);
   }
 
   @Test
@@ -24,7 +24,7 @@ public class ClienteTest {
     String cpfGet;
     cliente.setCpf("123.456.789-09");
     cpfGet = cliente.getCpf();
-    assertNotNull("CPF incorreto", cpfGet);
+    assertEquals("123.456.789-09", cpfGet);
   }
 
   @Test
@@ -32,7 +32,7 @@ public class ClienteTest {
     Date dataGet = new Date();
     cliente.setDataNascimento(dataGet);
     dataGet = cliente.getDataNascimento();
-    assertNotNull("Data de nascimento não definida", dataGet);
+    assertNotNull(dataGet, "Data de nascimento não definida");
   }
 
   @Test
@@ -63,16 +63,14 @@ public class ClienteTest {
   @Test
   public void validaDataNascimentoClienteTrueTest() throws ParseException {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date dataSubmetida = new Date();
-    dataSubmetida = simpleDateFormat.parse("2024-04-05");
+    Date dataSubmetida = simpleDateFormat.parse("2024-04-05");
     assertTrue(cliente.validaDataNascimentoCliente(dataSubmetida));
   }
 
   @Test
   public void validaDataNascimentoClienteFalseTest() throws ParseException {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date dataSubmetida = new Date();
-    dataSubmetida = simpleDateFormat.parse("2025-04-05");
+    Date dataSubmetida = simpleDateFormat.parse("2025-04-05");
     assertFalse(cliente.validaDataNascimentoCliente(dataSubmetida));
   }
 }

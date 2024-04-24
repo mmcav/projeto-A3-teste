@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Pedido {
 
-  private ArrayList<Produto> itensPedido = new ArrayList<Produto>();
+  final private ArrayList<Produto> itensPedido = new ArrayList<>();
   private float valorTotal;
 
   public ArrayList<Produto> getListaPedido() {
@@ -31,12 +31,12 @@ public class Pedido {
   }
 
   public boolean validaContagemItensPedido() {
-    if (this.itensPedido.size() > 0) {
+    if (!this.itensPedido.isEmpty()) {
       return true;
     } else {
       return false;
     }
-  };
+  }
 
   public float totalizaPedido() {
     if (this.validaContagemItensPedido()) {
@@ -45,6 +45,6 @@ public class Pedido {
       }
     }
     return valorTotal;
-  };
+  }
 
 }
