@@ -12,6 +12,14 @@ public class ClienteTest {
   private final Cliente cliente = new Cliente();
 
   @Test
+  public void setEGetIdTest(){
+    int idGet;
+    cliente.setId(1);
+    idGet = cliente.getId();
+    assertEquals(1, idGet);
+  }
+
+  @Test
   public void setEGetNomeTest() {
     String nomeGet;
     cliente.setNome("Luísa Ferreira");
