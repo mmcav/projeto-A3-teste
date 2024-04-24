@@ -59,7 +59,18 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>3.0.0-M7</version>
+<!--         Teste de configuração  -->
+<!--          <executions>-->
+<!--            <execution>-->
+<!--              <id>Testes unitários e de mock</id>-->
+<!--              <phase>test</phase>-->
+<!--              <goals>-->
+<!--                <goal>test</goal>-->
+<!--              </goals>-->
+<!--            </execution>-->
+<!--          </executions>-->
+<!--          FIm do teste de configuração-->
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -92,6 +103,25 @@
           <source>14</source>
           <target>14</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.10</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
