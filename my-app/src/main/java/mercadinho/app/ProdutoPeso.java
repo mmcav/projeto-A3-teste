@@ -2,6 +2,8 @@ package mercadinho.app;
 
 import java.util.Date;
 
+import static java.lang.System.out;
+
 public class ProdutoPeso extends Produto {
 
   private float peso;
@@ -25,7 +27,7 @@ public class ProdutoPeso extends Produto {
     if (this.validaProdutoFloatNonZero(novoPeso)) {
       this.peso = (float) novoPeso;
     } else {
-      System.out.printf("Erro: peso não pode ser zero ou negativo \n");
+      out.format("Erro: peso não pode ser zero ou negativo \n");
     }
   }
 

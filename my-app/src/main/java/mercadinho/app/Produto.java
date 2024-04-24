@@ -2,6 +2,8 @@ package mercadinho.app;
 
 import java.util.Date;
 
+import static java.lang.System.out;
+
 public abstract class Produto {
 
   private String fabricante;
@@ -12,7 +14,7 @@ public abstract class Produto {
   // Construtores
   public Produto() {
 
-  };
+  }
 
   public Produto(String fabricante, String nome, float preco, Date dataValidade) {
     this.setFabricante(fabricante);
@@ -26,7 +28,7 @@ public abstract class Produto {
     if (this.validaStringsProduto(novoFabricante)) {
       this.fabricante = novoFabricante;
     } else {
-      System.out.printf("Erro: nome do fabricante não pode ser vazio \n");
+      out.format("Erro: nome do fabricante não pode ser vazio \n");
     }
   }
 
@@ -34,7 +36,7 @@ public abstract class Produto {
     if (this.validaStringsProduto(novoNome)) {
       this.nome = novoNome;
     } else {
-      System.out.printf("Erro: nome do produto não pode ser vazio \n");
+      out.format("Erro: nome do produto não pode ser vazio \n");
     }
   }
 
@@ -42,7 +44,7 @@ public abstract class Produto {
     if (this.validaProdutoFloatNonZero(novoPreco)) {
       this.preco = (float) novoPreco;
     } else {
-      System.out.printf("Erro: preço não pode ser zero ou negativo \n");
+      out.format("Erro: preço não pode ser zero ou negativo \n");
     }
   }
 
@@ -50,7 +52,7 @@ public abstract class Produto {
     if (this.validaDataValidade(novaDataValidade)) {
       this.dataValidade = novaDataValidade;
     } else {
-      System.out.printf("Erro: Data de validade não pode ser anterior \n");
+      out.format("Erro: Data de validade não pode ser anterior \n");
     }
   }
 

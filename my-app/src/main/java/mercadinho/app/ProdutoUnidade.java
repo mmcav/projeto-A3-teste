@@ -2,6 +2,8 @@ package mercadinho.app;
 
 import java.util.Date;
 
+import static java.lang.System.out;
+
 public class ProdutoUnidade extends Produto {
 
   private int unidade;
@@ -25,7 +27,7 @@ public class ProdutoUnidade extends Produto {
     if (this.validaProdutoIntNonZero((int) novaUnidade)) {
       this.unidade = (int) novaUnidade;
     } else {
-      System.out.printf("Erro: Unidade não pode ser zero ou negativo");
+      out.format("Erro: Unidade não pode ser zero ou negativo");
     }
   }
 

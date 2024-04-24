@@ -3,9 +3,9 @@ package mercadinho.app;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProdutosTest {
 
@@ -17,7 +17,7 @@ public class ProdutosTest {
     String fabricanteGet;
     produtoPeso.setFabricante("Camil");
     fabricanteGet = produtoPeso.getFabricante();
-    assertNotNull("Fabricante incorreto", fabricanteGet);
+    assertEquals("Camil", fabricanteGet, "Nome incorreto");
 
   }
 
@@ -26,7 +26,7 @@ public class ProdutosTest {
     String nomeGet;
     produtoPeso.setNome("Arroz parbolizado");
     nomeGet = produtoPeso.getNome();
-    assertNotNull("Nome incorreto", nomeGet);
+    assertEquals("Arroz parbolizado",nomeGet, "Nome incorreto");
   }
 
   @Test
@@ -34,7 +34,7 @@ public class ProdutosTest {
     float precoGet;
     produtoPeso.setPreco((float) 7.50);
     precoGet = produtoPeso.getPreco();
-    assertNotNull("Preço incorreto", precoGet);
+    assertEquals((float)7.50, precoGet);
   }
 
   @Test
@@ -42,7 +42,7 @@ public class ProdutosTest {
     Date dataGet = new Date();
     produtoPeso.setDataValidade(dataGet);
     dataGet = produtoPeso.getDataValidade();
-    assertNotNull("Data de validade não definida", dataGet);
+    assertNotNull(dataGet, "Data de validade não definida");
   }
 
   @Test
@@ -50,7 +50,7 @@ public class ProdutosTest {
     float pesoGet;
     produtoPeso.setQuantidade((float) 1.00);
     pesoGet = produtoPeso.getQuantidade();
-    assertNotNull("Peso incorreto", pesoGet);
+    assertEquals(1.00, pesoGet);
   }
 
   @Test
@@ -58,7 +58,7 @@ public class ProdutosTest {
     int unidadeGet;
     produtoUnidade.setQuantidade((int) 5);
     unidadeGet = (int) produtoUnidade.getQuantidade();
-    assertNotNull("Unidade incorreta", unidadeGet);
+    assertEquals(5, unidadeGet);
   }
 
   @Test
@@ -76,16 +76,14 @@ public class ProdutosTest {
   @Test
   public void validaDataValidadeTrueTest() throws ParseException {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date dataSubmetida = new Date();
-    dataSubmetida = simpleDateFormat.parse("2024-04-25");
+    Date dataSubmetida = simpleDateFormat.parse("2024-04-25");
     assertTrue(produtoPeso.validaDataValidade(dataSubmetida));
   }
 
   @Test
   public void validaDataValidadeFalseTest() throws ParseException {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date dataSubmetida = new Date();
-    dataSubmetida = simpleDateFormat.parse("2023-04-25");
+    Date dataSubmetida = simpleDateFormat.parse("2023-04-25");
     assertFalse(produtoPeso.validaDataValidade(dataSubmetida));
   }
 
