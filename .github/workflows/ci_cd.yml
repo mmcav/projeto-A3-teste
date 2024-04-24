@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Rodar testes unitários
-        run: mvn --batch-mode --update-snapshots test
+        run: mvn -f ./my-app/pom.xml --batch-mode --update-snapshots test
 
   release:
     runs-on: ubuntu-latest
