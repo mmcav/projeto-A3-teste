@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main, dev, dev-CommitMsg]
   pull_request:
     branches: [main, dev]
 
@@ -22,6 +22,11 @@ jobs:
           #cache-dependency-path: /my-app/pom.xml
       - name: Fase compilação do Maven
         run: mvn -f ./my-app/pom.xml --batch-mode --update-snapshots compile
+      - name: Validação da mensagem de commit
+        run: |
+          chmod +x commit-msg
+          bash setup.sh
+          echo git config --global --list | grep .git-template
 
   build:
     runs-on: ubuntu-latest
