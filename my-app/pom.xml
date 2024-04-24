@@ -60,17 +60,6 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M7</version>
-<!--         Teste de configuração  -->
-<!--          <executions>-->
-<!--            <execution>-->
-<!--              <id>Testes unitários e de mock</id>-->
-<!--              <phase>test</phase>-->
-<!--              <goals>-->
-<!--                <goal>test</goal>-->
-<!--              </goals>-->
-<!--            </execution>-->
-<!--          </executions>-->
-<!--          FIm do teste de configuração-->
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -96,14 +85,16 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>14</source>
-          <target>14</target>
-        </configuration>
-      </plugin>
+<!--      Removed troubled plugin version for maven compiler plugin -->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-compiler-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <source>14</source>-->
+<!--          <target>14</target>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--      End of troublesome configuration -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
