@@ -3,6 +3,7 @@ package mercadinho.app;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,8 +76,11 @@ public class ProdutosTest {
 
   @Test
   public void validaDataValidadeTrueTest() throws ParseException {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date dataSubmetida = simpleDateFormat.parse("2024-04-25");
+    Date dataSubmetida = new Date();
+    Calendar calendario = Calendar.getInstance(); 
+    calendario.setTime(dataSubmetida); 
+    calendario.add(Calendar.DATE, 1);
+    dataSubmetida = calendario.getTime();
     assertTrue(produtoPeso.validaDataValidade(dataSubmetida));
   }
 

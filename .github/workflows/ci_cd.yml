@@ -21,7 +21,7 @@ jobs:
           #run: mvn -f my-app/pom.xml
           #cache-dependency-path: /my-app/pom.xml
       - name: Fase compilação do Maven
-        run: mvn -f ./my-app/pom.xml --batch-mode --update-snapshots compile
+        run: mvn --batch-mode --update-snapshots compile
       - name: Validação da mensagem de commit
         run: |
           chmod +x commit-msg
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Rodar testes unitários
-        run: mvn -f ./my-app/pom.xml --batch-mode --update-snapshots test
+        run: mvn --batch-mode --update-snapshots test
 
   release:
     runs-on: ubuntu-latest

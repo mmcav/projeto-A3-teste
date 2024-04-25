@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,8 +32,11 @@ public class PedidoTest {
 
   @Test
   public void totalizaPedidoTest() throws ParseException {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date dataValidade = simpleDateFormat.parse("2025-05-22");
+    Date dataValidade = new Date();
+    Calendar calendario = Calendar.getInstance(); 
+    calendario.setTime(dataValidade); 
+    calendario.add(Calendar.DATE, 7);
+    dataValidade = calendario.getTime();
     Pedido umPedido = new Pedido();
     float valorTotalTeste = 0;
 
