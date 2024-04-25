@@ -59,7 +59,7 @@ jobs:
           git config --local user.name "GitHub Actions"
       - name: Tag release
         run: |
-          GENERATE_VERSION=$1
+          GENERATE_VERSION=true
           echo "Generate version: $GENERATE_VERSION"
 
           PREVENT_REMOVE_FILE=$2
