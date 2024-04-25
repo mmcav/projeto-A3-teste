@@ -52,7 +52,9 @@ jobs:
       contents: write
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Configuração do Git
         run: |
           git config --local user.email "actions@github.com"
