@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main, release, dev]
   pull_request:
-    branches: [main, dev]
+    branches: [main, release, dev]
 
 jobs:
   preflight:
@@ -127,6 +127,8 @@ jobs:
               new_version=$LAST_TAG
               increment_type=""
 
+              cat messages.txt
+              
               while read message; do
                   if [[ $message =~ (([a-z]+)(\(.+\))?\!:)|(BREAKING CHANGE:) ]]; then
                       increment_type="major"
