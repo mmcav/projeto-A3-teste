@@ -16,7 +16,7 @@ jobs:
           echo "Validando mensagens de commit..."
 
           # Regex para validar a mensagem do commit
-          REGEX="^((Merge[ a-z-]* branch.*)|(Revert.*)|((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.*\))?!?: .*))"
+          REGEX="^((Merge.*)|(Revert.*)|((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.*\))?!?: .*))"
         
           # Se a tag de base não existir, use o primeiro commit do repositório
           BASE_TAG=your-base-tag  # Substitua com o nome da sua tag de base
