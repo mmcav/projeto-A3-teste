@@ -64,7 +64,7 @@ jobs:
   integration:
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/release'
+    if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - name: Rodar testes de integração
@@ -72,9 +72,7 @@ jobs:
 
   versioning:
     runs-on: ubuntu-latest
-    needs: test
-#change 'test' to 'integration' after the implementation of the integration test stage
-#    needs: integration
+    needs: integration
     permissions:
       contents: write
     if: github.ref == 'refs/heads/main'
