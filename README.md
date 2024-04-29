@@ -1,5 +1,4 @@
-# projeto-A3
-Projeto A3 - Qualidade de Software
+# Utilizando este repositório para testar o Github Actions com validação de mensagens de commits e geração de versões
 
 fix test
 
