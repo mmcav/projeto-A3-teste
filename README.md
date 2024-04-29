@@ -1,12 +1,6 @@
 # projeto-A3
 Projeto A3 - Qualidade de Software
 
-teste release
+fix test
 
-outro teste release
-
-ultimo teste release
-
-ultimo ultimo teste release
-
-ultimo ultimo ultimo teste
+fix test 2
