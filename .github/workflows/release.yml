@@ -2,7 +2,7 @@ name: Release Pipeline
 
 on:
   workflow_run:
-    workflows: [ci_cd]
+    workflows: [CI/CD Pipeline]
     types:
       - completed
 
