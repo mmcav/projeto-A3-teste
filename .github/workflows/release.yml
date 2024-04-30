@@ -9,7 +9,8 @@ on:
 jobs:
   integration:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/main'
+    #if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/main'
+    if: github.event.workflow_run.head_branch == 'refs/heads/release' || github.event.workflow_run.head_branch == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - name: Rodar testes de integração
@@ -20,7 +21,8 @@ jobs:
     needs: integration
     permissions:
       contents: write
-    if: github.ref == 'refs/heads/main'
+    #if: github.ref == 'refs/heads/main'
+    if: github.event.workflow_run.head_branch == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
