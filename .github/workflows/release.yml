@@ -7,19 +7,10 @@ on:
       - completed
 
 jobs:
-  pretest:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_branch }}
-      - run: git branch
-      - run: env
-
   integration:
     runs-on: ubuntu-latest
     #if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/main'
-    if: github.event.workflow_run.head_branch == 'refs/heads/release' || github.event.workflow_run.head_branch == 'refs/heads/main'
+    if: github.event.workflow_run.head_branch == 'release' || github.event.workflow_run.head_branch == 'main'
     steps:
       - uses: actions/checkout@v4
       - name: Rodar testes de integração
@@ -31,7 +22,7 @@ jobs:
     permissions:
       contents: write
     #if: github.ref == 'refs/heads/main'
-    if: github.event.workflow_run.head_branch == 'refs/heads/main'
+    if: github.event.workflow_run.head_branch == 'main'
     steps:
       - uses: actions/checkout@v4
         with:
