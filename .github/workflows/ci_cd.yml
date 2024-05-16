@@ -55,8 +55,15 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: build
     steps:
       - uses: actions/checkout@v4
       - name: Rodar testes unitários
         run: mvn --batch-mode --update-snapshots test
+      - name: Jacoco push
+        run: |
+          git add -f .\target\site\jacoco\
+          git commit -m "Jacoco Report"
+          git push
