@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">mercadinho.app</a> &gt; <span class="el_source">Cliente.java</span></div><h1>Cliente.java</h1><pre class="source lang-java linenums">package mercadinho.app;
+
+import java.util.Date;
+import java.util.regex.*;
+
+import static java.lang.System.out;
+
+public class Cliente {
+
+  private int id;
+  private String nome;
+  private String cpf;
+  private Date dataNascimento;
+
+  // Construtores
+<span class="fc" id="L16">  public Cliente() {</span>
+
+<span class="fc" id="L18">  }</span>
+
+<span class="nc" id="L20">  public Cliente(int id, String nome, String cpf, Date dataNascimento) {</span>
+<span class="nc" id="L21">    this.id = id;</span>
+<span class="nc" id="L22">    this.nome = nome;</span>
+<span class="nc" id="L23">    this.cpf = cpf;</span>
+<span class="nc" id="L24">    this.dataNascimento = dataNascimento;</span>
+<span class="nc" id="L25">  }</span>
+
+  // Setters:
+  public void setId(int id) {
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">    if(this.validaIdCliente(id)) {</span>
+<span class="fc" id="L30">      this.id = id;</span>
+    }
+<span class="fc" id="L32">  }</span>
+
+  public void setNome(String novoNome) {
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">    if (!novoNome.trim().isEmpty()) {</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">      if (this.validaNomeCliente(novoNome)) {</span>
+<span class="fc" id="L37">        this.nome = novoNome;</span>
+      } else {
+<span class="nc" id="L39">        out.format(&quot;Erro: Nome não pode conter dígitos \n&quot;);</span>
+      }
+    } else {
+<span class="nc" id="L42">      out.format(&quot;Erro: nome não pode ser vazio \n&quot;);</span>
+    }
+
+<span class="fc" id="L45">  }</span>
+
+  public void setCpf(String novoCpf) {
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">    if (!novoCpf.trim().isEmpty()) {</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">      if (this.validaCpfCliente(novoCpf)) {</span>
+<span class="fc" id="L50">        this.cpf = novoCpf;</span>
+      } else {
+<span class="nc" id="L52">        out.format(&quot;Erro: CPF incorreto. Informe novamente \n&quot;);</span>
+      }
+    } else {
+<span class="nc" id="L55">      out.format(&quot;Erro: CPF não pode ser vazio \n&quot;);</span>
+    }
+<span class="fc" id="L57">  }</span>
+
+  public void setDataNascimento(Date novoDataNascimento) {
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">    if (this.validaDataNascimentoCliente(novoDataNascimento)) {</span>
+<span class="fc" id="L61">      this.dataNascimento = novoDataNascimento;</span>
+    } else {
+<span class="nc" id="L63">      out.format(&quot;Erro: Data de nascimento não pode ser futura \n&quot;);</span>
+    }
+<span class="fc" id="L65">  }</span>
+
+  // Getters:
+  public int getId() {
+<span class="fc" id="L69">    return this.id;</span>
+  }
+
+  public String getNome() {
+<span class="fc" id="L73">    return this.nome;</span>
+  }
+
+  public String getCpf() {
+<span class="fc" id="L77">    return this.cpf;</span>
+  }
+
+  public Date getDataNascimento() {
+<span class="fc" id="L81">    return this.dataNascimento;</span>
+  }
+
+  // Validações
+  public boolean validaIdCliente(int id){
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">    if (id &gt; 0) {</span>
+<span class="fc" id="L87">      return true;</span>
+    } else {
+<span class="nc" id="L89">    return false;</span>
+    }
+  }
+
+  public boolean validaNomeCliente(String nome) {
+<span class="fc" id="L94">    String regex = &quot;\\d&quot;;</span>
+<span class="fc" id="L95">    Pattern pattern = Pattern.compile(regex);</span>
+<span class="fc" id="L96">    Matcher matcher = pattern.matcher(nome);</span>
+<span class="fc" id="L97">    boolean resultado = matcher.find();</span>
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">    if (resultado) {</span>
+<span class="fc" id="L100">      return false;</span>
+    } else {
+<span class="fc" id="L102">      return true;</span>
+    }
+  }
+
+  public boolean validaCpfCliente(String cpf) {
+
+<span class="fc" id="L108">    int soma = 0;</span>
+    int resto;
+<span class="fc" id="L110">    String regex = &quot;[^\\d]&quot;;</span>
+<span class="fc" id="L111">    cpf = cpf.replaceAll(regex, &quot;&quot;);</span>
+
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">    if (cpf.length() != 11)</span>
+    // || &quot;/^(\d)\1{10}$/.test(cpf))
+    {
+<span class="nc" id="L116">      return false;</span>
+    }
+
+<span class="fc bfc" id="L119" title="All 2 branches covered.">    for (int i = 1; i &lt;= 9; i++) {</span>
+<span class="fc" id="L120">      soma += Integer.parseInt(cpf.substring(i - 1, i)) * (11 - i);</span>
+    }
+
+<span class="fc" id="L123">    resto = (soma * 10) % 11;</span>
+
+<span class="pc bpc" id="L125" title="3 of 4 branches missed.">    if (resto == 10 || resto == 11) {</span>
+<span class="fc" id="L126">      resto = 0;</span>
+    }
+
+<span class="fc bfc" id="L129" title="All 2 branches covered.">    if (resto != Integer.parseInt(cpf.substring(9, 10))) {</span>
+<span class="fc" id="L130">      return false;</span>
+    }
+
+<span class="fc" id="L133">    soma = 0;</span>
+
+<span class="fc bfc" id="L135" title="All 2 branches covered.">    for (int i = 1; i &lt;= 10; i++) {</span>
+<span class="fc" id="L136">      soma += Integer.parseInt(cpf.substring(i - 1, i)) * (12 - i);</span>
+    }
+
+<span class="fc" id="L139">    resto = (soma * 10) % 11;</span>
+
+<span class="pc bpc" id="L141" title="2 of 4 branches missed.">    if (resto == 10 || resto == 11) {</span>
+<span class="nc" id="L142">      resto = 0;</span>
+    }
+
+<span class="pc bpc" id="L145" title="1 of 2 branches missed.">    if (resto != Integer.parseInt(cpf.substring(10, 11))) {</span>
+<span class="nc" id="L146">      return false;</span>
+    }
+
+<span class="fc" id="L149">    return true;</span>
+  }
+
+  public boolean validaDataNascimentoCliente(Date dataSubmetida) {
+<span class="fc" id="L153">    Date dataHoje = new Date();</span>
+<span class="fc" id="L154">    int resultadoComparacao = dataSubmetida.compareTo(dataHoje);</span>
+
+<span class="fc bfc" id="L156" title="All 2 branches covered.">    if (resultadoComparacao &gt;= 1) {</span>
+<span class="fc" id="L157">      return false;</span>
+    } else {
+<span class="fc" id="L159">      return true;</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

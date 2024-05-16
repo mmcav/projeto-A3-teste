@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pedido.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">mercadinho.app</a> &gt; <span class="el_source">Pedido.java</span></div><h1>Pedido.java</h1><pre class="source lang-java linenums">package mercadinho.app;
+
+import java.util.ArrayList;
+
+//Classe que contém lista de produtos e faz checkout (finaliza) uma compra;
+
+<span class="fc" id="L7">public class Pedido {</span>
+
+<span class="fc" id="L9">  final private ArrayList&lt;Produto&gt; itensPedido = new ArrayList&lt;&gt;();</span>
+  private float valorTotal;
+
+  public ArrayList&lt;Produto&gt; getListaPedido() {
+<span class="nc" id="L13">    return itensPedido;</span>
+  }
+
+  public void pushItemLista(Produto novoProduto) {
+<span class="fc" id="L17">    itensPedido.add(novoProduto);</span>
+<span class="fc" id="L18">  }</span>
+
+  public void deleteItemLista(int posicao) {
+<span class="nc" id="L21">    itensPedido.remove(posicao);</span>
+<span class="nc" id="L22">  }</span>
+
+  public Produto getItemListaPedido(int posicao) {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">    if ((int) posicao &gt;= 0) {</span>
+<span class="nc" id="L26">      return itensPedido.get(posicao);</span>
+    } else {
+<span class="nc" id="L28">      int positiveNumber = (int) ~posicao;</span>
+<span class="nc" id="L29">      return itensPedido.get(positiveNumber);</span>
+    }
+  }
+
+  public boolean validaContagemItensPedido() {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">    if (!this.itensPedido.isEmpty()) {</span>
+<span class="fc" id="L35">      return true;</span>
+    } else {
+<span class="nc" id="L37">      return false;</span>
+    }
+  }
+
+  public float totalizaPedido() {
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">    if (this.validaContagemItensPedido()) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">      for (Produto item : this.itensPedido) {</span>
+<span class="fc" id="L44">        valorTotal += item.getPreco() * item.getQuantidade();</span>
+<span class="fc" id="L45">      }</span>
+    }
+<span class="fc" id="L47">    return valorTotal;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProdutoUnidade.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">mercadinho.app</a> &gt; <span class="el_source">ProdutoUnidade.java</span></div><h1>ProdutoUnidade.java</h1><pre class="source lang-java linenums">package mercadinho.app;
+
+import java.util.Date;
+
+import static java.lang.System.out;
+
+public class ProdutoUnidade extends Produto {
+
+  private int unidade;
+
+  // Construtores
+  public ProdutoUnidade() {
+<span class="fc" id="L13">    super();</span>
+<span class="fc" id="L14">  }</span>
+
+<span class="fc" id="L16">  public ProdutoUnidade(String fabricante, String nome, float preco, Date dataValidade, int unidade) {</span>
+<span class="fc" id="L17">    super.setFabricante(fabricante);</span>
+<span class="fc" id="L18">    super.setNome(nome);</span>
+<span class="fc" id="L19">    super.setPreco((float) preco);</span>
+<span class="fc" id="L20">    super.setDataValidade(dataValidade);</span>
+<span class="fc" id="L21">    this.setQuantidade((int) unidade);</span>
+<span class="fc" id="L22">  }</span>
+
+  // Setters
+  @Override
+  public void setQuantidade(float novaUnidade) {
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">    if (this.validaProdutoIntNonZero((int) novaUnidade)) {</span>
+<span class="fc" id="L28">      this.unidade = (int) novaUnidade;</span>
+    } else {
+<span class="nc" id="L30">      out.format(&quot;Erro: Unidade não pode ser zero ou negativo&quot;);</span>
+    }
+<span class="fc" id="L32">  }</span>
+
+  // Getters
+  public float getQuantidade() {
+<span class="fc" id="L36">    return (float) this.unidade;</span>
+  }
+
+  // Validações
+  public boolean validaProdutoIntNonZero(int someInt) {
+<span class="fc bfc" id="L41" title="All 2 branches covered.">    if ((int) someInt &gt; 0) {</span>
+<span class="fc" id="L42">      return true;</span>
+    } else {
+<span class="fc" id="L44">      return false;</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+my-app,mercadinho.app,Cliente,58,193,14,22,15,52,14,18,1,13
+my-app,mercadinho.app,ProdutoUnidade,6,43,1,3,1,16,1,6,0,5
+my-app,mercadinho.app,ClienteReaderDb,0,20,0,2,0,7,0,4,0,3
+my-app,mercadinho.app,App,7,0,0,0,3,0,2,0,2,0
+my-app,mercadinho.app,ProdutoPeso,6,33,1,1,1,13,1,4,0,4
+my-app,mercadinho.app,ControladorEntidades,5,0,0,0,2,0,2,0,2,0
+my-app,mercadinho.app,Produto,39,81,4,10,10,29,5,15,1,12
+my-app,mercadinho.app,Pedido,29,48,4,4,8,11,6,5,3,4
