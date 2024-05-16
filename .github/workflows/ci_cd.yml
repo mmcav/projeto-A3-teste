@@ -64,7 +64,7 @@ jobs:
         run: mvn --batch-mode --update-snapshots test
       - name: Jacoco push
         run: |
-          git add -f .\target\site\jacoco\
+          git add -f ./target/site/jacoco/
           git status
           git commit -m "Jacoco Report"
           git push
