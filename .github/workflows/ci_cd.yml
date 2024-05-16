@@ -64,7 +64,8 @@ jobs:
         run: mvn --batch-mode --update-snapshots test
       - name: Jacoco push
         run: |
+          git config --global user.name "Github Actions Bot"
+          git config --global user.email "githubactionsbot@example.com"
           git add -f ./target/site/jacoco/
-          git status
           git commit -m "Jacoco Report"
           git push
